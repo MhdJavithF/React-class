@@ -14,8 +14,8 @@ function App() {
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
-      console.log(newTodo); // Log the current value of newTodo when Enter is pressed
-      setTodos([...todos, { title: newTodo }]); // Add the new todo to the list
+      //console.log(newTodo); // Log the current value of newTodo when Enter is pressed
+      setTodos([...todos, { title: newTodo, isCompleted: false}]); // Add the new todo to the list
       setNewTodo(""); // Clear the input
     }
   };
@@ -23,13 +23,27 @@ function App() {
   const handleClick = (e) => {
     //console.log(newTodo);
     e.preventDefault();
-    setTodos([...todos, {title: newTodo}]);
+    setTodos([...todos, {title: newTodo, isCompleted: false}]);
     setNewTodo("");
   }
 
   const handleChecks = (e) => {
-    
+    const updatedTodoStatus = e.target.checked;
+    const currentTodoIndex = e.target.dataset.id;
+    const newUpdatedTodos = [...todos];
+    const newUpdatedItem = {...newUpdatedTodos[currentTodoIndex]};
+    newUpdatedItem.isCompleted = updatedTodoStatus;
+    newUpdatedTodos.splice(currentTodoIndex,1,newUpdatedItem);
+    setTodos(newUpdatedTodos);
   }
+
+  const handleDelete = (e) => {
+    const deleteIndex = e.target.dataset.id;
+    const todosAfterDelete = [...todos];
+    todosAfterDelete.splice(deleteIndex,1);
+    setTodos(todosAfterDelete);
+  }
+
   return (
     <div className="App">
       <div className="wrapper">
@@ -40,13 +54,14 @@ function App() {
         </form>
         <div className="todo-list">
           {
-            todos.map((todo) => (
+            todos.map((todo,indx) => (
               <div className="todo-item">
-                <input type='checkbox' checked={todos.isCompleted} onClick={handleChecks}/>
-                <span className={todos.isCompleted? "completed":""}>
+                <input data-id={indx} type='checkbox' checked={todo.isCompleted} onClick={handleChecks}/>
+                <span className={todo.isCompleted? "completed":""}>
                   {' '}
                   {todo.title}
                 </span>
+                <span className='delete' onClick={handleDelete} data-id={indx}> X </span>
               </div>
             ))
           }

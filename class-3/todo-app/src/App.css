@@ -57,9 +57,20 @@
   text-align: left;
   font-size: larger;
   font-weight: 600;
+  width: 100%;
+  display:flex;
+  align-items: center;
 
   span.completed {
     text-decoration: line-through;
+  }
+
+  .delete {
+    color: red;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-left: auto;
+    cursor: pointer;
   }
 }
 
@@ -79,5 +90,6 @@
     border-radius: 30px;
     color: white;
     background-color: rgb(20, 139, 186);
+    cursor: pointer;
   }
 }
