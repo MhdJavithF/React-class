@@ -8,11 +8,13 @@ import { Counter } from './Components/Counter';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <div className='wrapper'>
-      <Counter label="- Dark mode" mode="dark" />
-      <Counter label="- Light mode" mode="light" />
-    </div>
-    
+    <div>
+      <div className='wrapper'>
+        <Counter label="- Dark mode" mode="dark" />
+        <Counter label="- Light mode" mode="light" />
+        </div>
+        <App/>
+      </div>
   </React.StrictMode>
 );
 
