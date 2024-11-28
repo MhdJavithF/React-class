@@ -40,7 +40,8 @@
 .movie-lists {
   display: flex;
   gap: 15px;
-  margin: 15px;
+  justify-content: center;
+  margin-top: 1.2rem;
   flex-wrap: wrap;
 }
 
@@ -121,5 +122,26 @@
     height: 20px;
     padding: 2px;
     margin-right: 5px;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  color: bisque;
+  margin: 3rem 0;
+
+  .page{
+    border-style:ridge ;
+    padding: 7px;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+
+  .page.active {
+    background-color:cornsilk ;
+    color: black;
+    font-weight: bold;
   }
 }

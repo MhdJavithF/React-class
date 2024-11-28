@@ -3,6 +3,7 @@ import Heading from "./Heading";
 import MovieDetails from "./MovieDetails";
 import MovieLists from "./MovieLists";
 import {
+  // BrowserRouter,
     createBrowserRouter,
     RouterProvider,
 } from "react-router-dom";
@@ -53,7 +54,7 @@ const router = createBrowserRouter([
 const MovieApp = () => {
     return(
         <div>
-            <RouterProvider router={router} />
+          <RouterProvider router={router} />
         </div>
     );
 }
