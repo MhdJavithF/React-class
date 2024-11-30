@@ -169,13 +169,30 @@
   height: 100;
   width: 100;
   color: #ccc;
-  text-align: center;
-
+  
+  h2 {
+    margin-left: 1rem;
+  }
   input {
+    margin: 10px 0 10px 5rem;
+  }
+
+  #name {
     width: 300px;
     height: 20px;
     padding: 2px;
     margin-right: 5px;
+  }
+
+  #rate {
+    width: 100px;
+    height: 20px;
+    padding: 2px;
+    margin-right: 5px;
+  }
+
+  span {
+    margin: 0 0 0 5rem;
   }
 }
 

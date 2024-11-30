@@ -10,8 +10,9 @@ const MovieLists = () => {
     const [watchlistMovies, setWatchlists] = useState([]);
 
     const popularMovies = useMemo(() => movies.filter((movie) => {
+        console.log('popularMovies');
         return movie.popularity > 600;
-    }).length, []);
+    }).length, [movies]);
 
 
     const fetchCall = (pageNo) => {
