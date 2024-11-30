@@ -59,21 +59,62 @@
   h4 {
     color: antiquewhite;
   }
+
+  .add-watchlist {
+    position: relative;
+    width: 100%;
+    display: flex;
+  }
+
+  #icon {
+    position: absolute;
+    color: white;
+    font-size: 19px;
+    left: .25em;
+    bottom: .5em;
+    font-weight: 500;
+  }
 }
 
 .heading {
   height: 4rem;
+  width: 100%;
   display: flex;
   align-items: center;
   gap: 15px;
   background-color: black;
 
-  svg {
+  #home_img {
     margin-left: 1.2rem;
   }
 
   h3 {
     color: blanchedalmond;
+  }
+
+  .watchlist {
+    color: beige;
+    display: flex;
+    align-items: center;
+    margin-left: 60%;
+    gap: 5px;
+
+    p {
+      font-size: medium;
+      font-weight: 500;
+    }
+
+    #count {
+      width: 30px;
+      padding: 2px;
+      font-size: medium;
+      font-weight: 500;
+      border: 2px solid white;
+      border-radius: 50px;
+      background-color: white;
+      color: black;
+      text-align: center;
+    }
   }
 }
 

@@ -1,11 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import MovieCard from "./MovieCard";
 import Pagination from "./Pagination";
+import Heading from "./Heading";
 
 
 
 const MovieLists = () => {
-    const [movies, setMovies] = useState([])
+    const [movies, setMovies] = useState([]);
+    const [watchlistMovies, setWatchlists] = useState([]);
+
+    const popularMovies = useMemo(() => movies.filter((movie) => {
+        return movie.popularity > 600;
+    }).length, []);
+
 
     const fetchCall = (pageNo) => {
         fetch(`https://api.themoviedb.org/3/movie/popular?api_key=91b86d6d565b7ac388d4dde45df6c38f&page=${pageNo}`)
@@ -19,10 +26,11 @@ const MovieLists = () => {
 
     return (
         <>
+            <Heading watchlistCount={watchlistMovies.length}/>
             <div className="movie-lists">
                 {
                     movies.map(movie => (
-                        <MovieCard movie={movie}/>
+                        <MovieCard movie={movie} onUpdateWatchlist={setWatchlists} watchlist={watchlistMovies}/>
                     ))
                 }
             </div>

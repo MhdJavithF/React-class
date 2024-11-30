@@ -3,15 +3,15 @@ import { useCallback, useEffect, useState } from "react";
 const Pagination = ({change}) => {
 
     const totalPages = 47378;
-    const maxVibiblePage = 10;
+    const maxVisiblePage = 10;
     const startPage = 1;
 
     const [pages, setPages] = useState([]);
     const [activePage, setActivePages] = useState(1);
 
-    const getPage = useCallback((totalPages, maxVibiblePage, activePage) => {
-        const resultPage = totalPages > maxVibiblePage ? maxVibiblePage : totalPages;
-        const startPage = (activePage + resultPage) > totalPages ? totalPages - maxVibiblePage + 1 : activePage;
+    const getPage = useCallback((totalPages, maxVisiblePage, activePage) => {
+        const resultPage = totalPages > maxVisiblePage ? maxVisiblePage : totalPages;
+        const startPage = (activePage + resultPage) > totalPages ? totalPages - maxVisiblePage + 1 : activePage;
         return [...Array(resultPage)].map((_,idx) => {
             return startPage + idx;
         });
@@ -33,7 +33,7 @@ const Pagination = ({change}) => {
     },[activePage]);
 
     useEffect(() => {
-        const newPages = getPage(totalPages, maxVibiblePage, activePage)
+        const newPages = getPage(totalPages, maxVisiblePage, activePage)
         setPages(newPages);
     },[activePage]);
     
