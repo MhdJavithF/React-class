@@ -219,9 +219,26 @@
   }
 }
 
-#fav-head{
-  color: blanchedalmond;
-  margin-left: 2rem;
+.fav-head{
+  display: flex;
+  width: 40%;
+  margin-top: 2rem;
+  justify-content: space-around;
+  align-items: center;
+
+  h2{
+    color: blanchedalmond;
+    margin-left: 2rem;
+  }
+ 
+  input {
+    width: 300px;
+    height: 20px;
+    font-size: 1.2rem;
+    padding: 8px;
+    border-radius: 30px;
+  }
+  
 }
 .fav-wrapper {
   width: 80%;
@@ -234,13 +251,14 @@
     flex-grow: 0;
     /* background-color: #a59595; */
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    /* justify-content: center; */
     
     .genres-wrapper{
       width: 220px;
       height: 250px;
       /* margin-top: 5rem; */
-      border: 1px solid whitesmoke;
+      /* border: 1px solid whitesmoke; */
       cursor: pointer;
 
       .genre {
@@ -282,10 +300,22 @@
 
     th {
       border: 1px double white;
+      span {
+        margin-left: 1rem;
+        cursor: pointer;
+      }
+    }
+
+    tbody p {
+      margin-top: 5rem;
     }
 
     td {
       font-weight:500 ;
+
+      button{
+        font-weight: 600;
+      }
     }
   }
 }
