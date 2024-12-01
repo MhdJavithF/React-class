@@ -2,6 +2,7 @@ import AddMovie from "./AddMovie";
 import Heading from "./Heading";
 import MovieDetails from "./MovieDetails";
 import MovieLists from "./MovieLists";
+import MovieFavourites from "./MovieFavourites";
 import {
   // BrowserRouter,
     createBrowserRouter,
@@ -32,9 +33,9 @@ const router = createBrowserRouter([
           <>
               <Heading/>
               <div>
-                <h1 style={{textAlign:"center",color:"white"}}>Please click the movie card separately
+                <h2 style={{textAlign:"center",color:"white", verticalAlign:'center'}}>Please click the movie card separately
                   <p>to view the movie details.</p>
-                </h1>
+                </h2>
               </div>
           </>
         )
@@ -45,6 +46,14 @@ const router = createBrowserRouter([
           <>
               <Heading/>
               <MovieDetails/>
+          </>
+        )
+      },
+      {
+        path: "/movie-favourites/",
+        element: (
+          <>
+              <MovieFavourites />
           </>
         )
       }

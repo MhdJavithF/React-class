@@ -112,13 +112,15 @@
     margin-left: 60%;
     gap: 5px;
 
-    p {
+    p,svg {
       font-size: medium;
       font-weight: 500;
+      color: blanchedalmond;
     }
 
     #count {
       width: 30px;
+      height: 20px;
       padding: 2px;
       font-size: medium;
       font-weight: 500;
@@ -168,10 +170,10 @@
 .add-movie {
   height: 100;
   width: 100;
-  color: #ccc;
+  color:blanchedalmond;
   
   h2 {
-    margin-left: 1rem;
+    margin-left: 2rem;
   }
   input {
     margin: 10px 0 10px 5rem;
@@ -214,5 +216,75 @@
     background-color:cornsilk ;
     color: black;
     font-weight: bold;
+  }
+}
+
+#fav-head{
+  color: blanchedalmond;
+  margin-left: 2rem;
+}
+.fav-wrapper {
+  width: 80%;
+  display: flex;
+  /* justify-self: center; */
+  margin: 5rem;
+  gap: 2.5rem;
+
+  .left-sec {
+    flex-grow: 0;
+    /* background-color: #a59595; */
+    display: flex;
+    justify-content: center;
+    
+    .genres-wrapper{
+      width: 220px;
+      height: 285px;
+      margin-top: 5rem;
+      border: 1px solid whitesmoke;
+      cursor: pointer;
+
+      .genre {
+        color: black;
+        font-weight: 550;
+        text-align: center;
+        padding: 10px;
+        margin: 5px;
+        background-color:rgba(255, 255, 255, 0.836) ;
+      }
+
+      .selected {
+        background-color: black;
+        color: whitesmoke;
+        border: 2px double white;
+      }
+    }
+  }
+  .right-sec {
+    flex-grow: 1;
+    background-color: rgba(255, 255, 255, 0.836);
+
+    table {
+      width: 100%;
+      border-collapse:collapse ;
+      text-align: center;
+
+      thead tr {
+        background-color: black;
+        color: whitesmoke;
+      }
+    }
+
+    th,td {
+      border: 2px double black;
+      padding: 10px;
+    }
+
+    th {
+      border: 1px double white;
+    }
+
+    td {
+      font-weight:500 ;
+    }
   }
 }

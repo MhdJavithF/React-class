@@ -3,17 +3,23 @@ import { Link } from "react-router-dom";
 
 const MovieCard = ({movie, onUpdateWatchlist, watchlist}) => {
 
-    const isMovieAdded = watchlist.find(addedMovie => addedMovie == movie.id);
+    const isMovieAdded = watchlist.find(addedMovie => addedMovie.id == movie.id);
 
     const handleWatchlistMovie = (e) => {
         const movieId = e.currentTarget.dataset.id;
         if(!isMovieAdded){
             onUpdateWatchlist((prevList) => {
-                return ([...prevList, movieId])
+                const favourites = ([...prevList, movie]);
+                localStorage.setItem("favourites",JSON.stringify(favourites)|| []);
+                return favourites;
             });
         }
         else{
-            onUpdateWatchlist(prevList => prevList.filter(item => item !== movieId));
+            onUpdateWatchlist(prevList => {
+                const newList = prevList.filter(item => item !== movie);
+                localStorage.setItem("favourites",JSON.stringify(newList) || []);
+                return newList;
+            });
         }
         
     }

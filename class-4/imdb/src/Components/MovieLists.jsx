@@ -7,10 +7,13 @@ import Heading from "./Heading";
 
 const MovieLists = () => {
     const [movies, setMovies] = useState([]);
-    const [watchlistMovies, setWatchlists] = useState([]);
+    const [watchlistMovies, setWatchlists] = useState(() => {
+        const favouriteData = localStorage.getItem("favourites") || [];
+        return (JSON.parse(favouriteData));
+    });
 
     const popularMovies = useMemo(() => movies.filter((movie) => {
-        console.log('popularMovies');
+        // console.log('popularMovies');
         return movie.popularity > 600;
     }).length, [movies]);
 
