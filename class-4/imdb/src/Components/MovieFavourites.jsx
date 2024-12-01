@@ -27,10 +27,12 @@ const MovieFavourites = () => {
     const [favMovieList, setFavMovieList] = useState([]);
     const [genres, setGenres] = useState([]);
     const [selectGenre, setSelectGenre] = useState("");
+    const [filterMovieList, setFilterMovieList] = useState([]);
 
     useEffect(() => {
         const favouriteData = JSON.parse(localStorage.getItem("favourites")) || [];
         setFavMovieList(favouriteData);
+        setFilterMovieList(favouriteData);
 
         const genreData = favouriteData.map(data => data.genre_ids[0]);
         setGenres(Array.from(new Set(genreData)));
@@ -39,7 +41,12 @@ const MovieFavourites = () => {
     const handleSelectGenre = (e) => {
         setSelectGenre(e.target.dataset.id)
     }
-
+    
+    useEffect(() => {
+        setFilterMovieList(() => {
+            return favMovieList.filter(movie => !selectGenre || movie.genre_ids[0] == selectGenre)
+        });
+    },[selectGenre,favMovieList])
     return (
         <div>
             <Heading watchlistCount={favMovieList.length}/>
@@ -69,7 +76,7 @@ const MovieFavourites = () => {
                         </thead>
                         <tbody>
                                 {
-                                    favMovieList.map((fav) => (
+                                    filterMovieList?.map((fav) => (
                                         <tr>
                                             <td><img src={`https://image.tmdb.org/t/p/w500/${fav.poster_path}`} style={{width:"120px"}}/></td>
                                             <td>{fav.title}</td>

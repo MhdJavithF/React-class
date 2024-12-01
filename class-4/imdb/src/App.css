@@ -238,18 +238,19 @@
     
     .genres-wrapper{
       width: 220px;
-      height: 285px;
-      margin-top: 5rem;
+      height: 250px;
+      /* margin-top: 5rem; */
       border: 1px solid whitesmoke;
       cursor: pointer;
 
       .genre {
         color: black;
+        height: 1.1rem;
         font-weight: 550;
         text-align: center;
-        padding: 10px;
-        margin: 5px;
-        background-color:rgba(255, 255, 255, 0.836) ;
+        padding: 8px;
+        margin: 6px;
+        background-color:rgba(255, 255, 255, 0.836);
       }
 
       .selected {
