@@ -21,17 +21,26 @@ const CartPage = ({open, setOpen}) => {
     dispatch(removeFromCart(productID));
   }
 
-  const handleDecreaseQty = (productID) => (e) => {
+  const handleDecreaseQty = (productID) => () => {
     dispatch(decreaseQty(productID));
   }
 
-  const handleIncreaseQty = (productID) => (e) => {
+  const handleIncreaseQty = (productID) => () => {
     dispatch(increaseQty(productID));
   }
 
   const handleUpdate = (productID) => (e) => {
-    dispatch(updateQty({productID, value: e.target.value}))
+    dispatch(updateQty({productID, value: e.target.value}));
   }
+
+  const calculateSubtotal = () => {
+    return Object.keys(cartItems).reduce((total, productId) => {
+      const product = getProduct(productId); // Get product details
+      const quantity = cartItems[productId]; // Get quantity from cart
+      const price = product?.price || 0; // Ensure price is valid
+      return total + price * quantity;
+    }, 0);
+  };
 
   return (
     <Dialog open={Boolean(open)} onClose={() => setOpen(false)} className="relative z-10">
@@ -89,9 +98,8 @@ const CartPage = ({open, setOpen}) => {
                                       Qty:
                                     </label>
                                     <button
-                                      onclick={handleDecreaseQty(productId)}
+                                      onClick={handleDecreaseQty(productId)}
                                       class="bg-gray-300 text-gray-700 px-2 py-1 rounded-md"
-                                      
                                     >
                                       -
                                     </button>
@@ -104,7 +112,7 @@ const CartPage = ({open, setOpen}) => {
                                       onChange={handleUpdate(productId)}
                                     />
                                     <button
-                                      onclick={handleIncreaseQty(productId)}
+                                      onClick={handleIncreaseQty(productId)}
                                       class="bg-gray-300 text-gray-700 px-2 py-1 rounded-md"
                                     >
                                       +
@@ -129,7 +137,7 @@ const CartPage = ({open, setOpen}) => {
                 <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
                   <div className="flex justify-between text-base font-medium text-gray-900">
                     <p>Subtotal</p>
-                    <p>$262.00</p>
+                    <p>${calculateSubtotal().toFixed(2)}</p>
                   </div>
                   <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                   <div className="mt-6">

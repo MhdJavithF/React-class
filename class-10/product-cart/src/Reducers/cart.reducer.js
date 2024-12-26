@@ -16,17 +16,19 @@ export const cartSlice = createSlice({
         state.items[action.payload] += 1;
     },
     decreaseQty: (state, action) => {
+      if(state.items[action.payload] > 1) {
         state.items[action.payload] -= 1;
+      }
     },
     updateQty:  (state, action) => {
         const productId = action.payload.productID;
         const finalCount = action.payload.value;
         state.items[productId] = Number(finalCount);
-    },
+    }
   }
 })
 
-// Action creators are generated for each case reducer function
+
 export const { addToCart, removeFromCart, increaseQty, decreaseQty, updateQty } = cartSlice.actions
 
 export default cartSlice.reducer
